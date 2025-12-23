@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Page</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link
+   rel="stylesheet"
+   href="WhatsApp Image 2025-04-16 at 14.57.18_dcdf3bc7.jpg"
+    integrity="sha512-sV2Kkz5p9mSgq3E0asfNlYyt/4Lh7Z5zLkp3ZxBshjqBlKZEm0ZaeENz9ntoEAMkO5DzLpPo3jcwR+As9eyFqw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+</head>
+<body>
+  <div class="container">
+    <div class="login-container">
+      <div class="login-box">
+        <div class="logo">
+          <i class="fas fa-box"></i>
+          <h2>Account Login</h2>
+        </div>
+
+        <form>
+          <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Username or Email address" />
+          </div>
+          <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Password" />
+          </div>
+
+          <div class="options">
+            <label><input type="checkbox" /> Remember Me</label>
+            <a href="#">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="login-btn" onclick="window.location.href='main.html'; return false;">Login</button>
+
+          <p class="signup-text">Don't have an account? <a href="main.html">Sign Up</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

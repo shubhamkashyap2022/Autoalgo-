@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Blog - AutoAlgo Insight</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f7f7f7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: #1a5f7a;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      padding: 1rem;
+      color: white;
+      z-index: 1000;
+    }
+
+    .nav-left {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .nav-right a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 20px;
+    }
+
+    .nav-right a:hover {
+      text-decoration: underline;
+    }
+
+    .blog-container {
+      max-width: 1000px;
+      margin: 100px auto 50px;
+      padding: 0 20px;
+    }
+
+    .blog-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .blog-header h1 {
+      font-size: 2.5rem;
+      color: #1a5f7a;
+      margin-bottom: 15px;
+    }
+
+    .blog-header p {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .blog-search {
+      max-width: 600px;
+      margin: 0 auto 40px;
+      position: relative;
+    }
+
+    .blog-search input {
+      width: 100%;
+      padding: 15px 20px;
+      border: 1px solid #ddd;
+      border-radius: 50px;
+      font-size: 1rem;
+      padding-right: 50px;
+    }
+
+    .blog-search button {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      background: #1a5f7a;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+
+    .blog-posts {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .blog-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .blog-image {
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .blog-content {
+      padding: 25px;
+    }
+
+    .blog-category {
+      display: inline-block;
+      background: #56b3aa;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+    }
+
+    .blog-title {
+      font-size: 1.3rem;
+      color: #1a5f7a;
+      margin-bottom: 10px;
+    }
+
+    .blog-title a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .blog-title a:hover {
+      color: #56b3aa;
+    }
+
+    .blog-excerpt {
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .blog-meta {
+      display: flex;
+      justify-content: space-between;
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    .blog-pagination {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 50px;
+    }
+
+    .page-link {
+      display: inline-block;
+      padding: 8px 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      color: #1a5f7a;
+      text-decoration: none;
+    }
+
+    .page-link.active {
+      background: #1a5f7a;
+      color: white;
+      border-color: #1a5f7a;
+    }
+
+    .blog-sidebar {
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    .sidebar-title {
+      color: #1a5f7a;
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .categories-list {
+      list-style: none;
+    }
+
+    .categories-list li {
+      margin-bottom: 10px;
+    }
+
+    .categories-list a {
+      color: #555;
+      text-decoration: none;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .categories-list a:hover {
+      color: #1a5f7a;
+    }
+
+    .categories-list span {
+      background: #e8f4f8;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.8rem;
+    }
+
+    .popular-posts {
+      list-style: none;
+    }
+
+    .popular-post {
+      display: flex;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .popular-post:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .popular-post img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-right: 15px;
+    }
+
+    .popular-post h4 {
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+    }
+
+    .popular-post a {
+      color: #555;
+      text-decoration: none;
+    }
+
+    .popular-post a:hover {
+      color: #1a5f7a;
+    }
+
+    .popular-post .post-date {
+      color: #888;
+      font-size: 0.8rem;
+    }
+
+    .blog-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 30px;
+    }
+
+    .site-footer {
+      background-color: #1a5f7a;
+      color: white;
+      padding: 30px 10px;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      gap: 20px;
+    }
+
+    .footer-left h2 {
+      font-family: 'Courier New', Courier, monospace;
+      letter-spacing: 4px;
+      font-size: 1.6rem;
+      color: #56b3aa;
+    }
+
+    .footer-center {
+      text-align: center;
+      flex: 1;
+    }
+
+    .footer-center a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+      font-size: 0.95rem;
+    }
+
+    .footer-center a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-right a {
+      margin: 0 10px;
+      font-size: 1.4rem;
+      color: #56b3aa;
+      text-decoration: none;
+    }
+
+    .footer-right a:hover {
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .blog-header h1 { font-size: 2rem; }
+      .blog-layout { grid-template-columns: 1fr; }
+      .footer-container { flex-direction: column; text-align: center; }
+      .footer-right { margin-top: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left"><h1>AutoAlgo Insight</h1></div>
+    <div class="nav-right">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Blog Content -->
+  <main class="blog-container">
+    <div class="blog-header">
+      <h1>AutoAlgo Blog</h1>
+      <p>Explore insights on meta-learning, AutoML, algorithm selection, and cutting-edge ML research.</p>
+    </div>
+
+    <div class="blog-search">
+      <input type="text" placeholder="Search blog posts...">
+      <button>Search</button>
+    </div>
+
+    <div class="blog-layout">
+      <div class="blog-main">
+        <div class="blog-posts">
+
+          <!-- Post 1 -->
+          <div class="blog-card">
+            <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')"></div>
+            <div class="blog-content">
+              <span class="blog-category">Meta-Learning</span>
+              <h3 class="blog-title"><a href="#">How Meta-Features Power Algorithm Selection</a></h3>
+              <p class="blog-excerpt">Learn how dataset characteristics like skewness and entropy help predict the best ML model.</p>
+              <div class="blog-meta">
+                <span>Calendar November 5, 2025</span>
+                <span>Clock 6 min read</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Post 2 -->
+          <div class="blog-card">
+            <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14babba?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')"></div>
+            <div class="blog-content">
+              <span class="blog-category">AutoML</span>
+              <h3 class="blog-title"><a href="#">Auto-Sklearn 2.0 vs Traditional ML Pipelines</a></h3>
+              <p class="blog-excerpt">A performance comparison of automated vs manual model selection on real datasets.</p>
+              <div class="blog-meta">
+                <span>Calendar October 28, 2025</span>
+                <span>Clock 8 min read</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Post 3 -->
+          <div class="blog-card">
+            <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1526379095098-d400fd0bf935?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')"></div>
+            <div class="blog-content">
+              <span class="blog-category">Case Study</span>
+              <h3 class="blog-title"><a href="#">Predicting Best Algorithm on OpenML Datasets</a></h3>
+              <p class="blog-excerpt">We trained a meta-learner on 100+ datasets — here are the results.</p>
+              <div class="blog-meta">
+                <span>Calendar October 15, 2025</span>
+                <span>Clock 10 min read</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Post 4 -->
+          <div class="blog-card">
+            <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1504639725590-34d0984388bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')"></div>
+            <div class="blog-content">
+              <span class="blog-category">Tutorial</span>
+              <h3 class="blog-title"><a href="#">Extract Meta-Features with pymfe in 5 Steps</a></h3>
+              <p class="blog-excerpt">A beginner-friendly guide to using Python Meta-Feature Extractor.</p>
+              <div class="blog-meta">
+                <span>Calendar September 30, 2025</span>
+                <span>Clock 7 min read</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Post 5 -->
+          <div class="blog-card">
+            <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef946fe0993f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')"></div>
+            <div class="blog-content">
+              <span class="blog-category">Research</span>
+              <h3 class="blog-title"><a href="#">Tornede et al. (2023): Meta-Level Algorithm Selection</a></h3>
+              <p class="blog-excerpt">Key takeaways from the latest paper on stacking meta-learners.</p>
+              <div class="blog-meta">
+                <span>Calendar September 20, 2025</span>
+                <span>Clock 9 min read</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Post 6 -->
+          <div class="blog-card">
+            <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')"></div>
+            <div class="blog-content">
+              <span class="blog-category">Beginner Guide</span>
+              <h3 class="blog-title"><a href="#">Classification vs Regression: Auto-Detection Explained</a></h3>
+              <p class="blog-excerpt">How our platform automatically identifies your ML task from the dataset.</p>
+              <div class="blog-meta">
+                <span>Calendar September 10, 2025</span>
+                <span>Clock 5 min read</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="blog-pagination">
+          <a href="#" class="page-link active">1</a>
+          <a href="#" class="page-link">2</a>
+          <a href="#" class="page-link">Next Next</a>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="blog-sidebar">
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">Categories</h3>
+          <ul class="categories-list">
+            <li><a href="#">AutoML <span>18</span></a></li>
+            <li><a href="#">Meta-Learning <span>15</span></a></li>
+            <li><a href="#">Case Studies <span>10</span></a></li>
+            <li><a href="#">Tutorials <span>22</span></a></li>
+            <li><a href="#">Research Papers <span>12</span></a></li>
+            <li><a href="#">Beginner Guides <span>20</span></a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">Popular Posts</h3>
+          <ul class="popular-posts">
+            <li class="popular-post">
+              <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" alt="Meta-features">
+              <div>
+                <h4><a href="#">Predicting Best Algorithm on OpenML</a></h4>
+                <div class="post-date">Oct 15, 2025</div>
+              </div>
+            </li>
+            <li class="popular-post">
+              <img src="https://images.unsplash.com/photo-1555066931-4365d14babba?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" alt="AutoML">
+              <div>
+                <h4><a href="#">Auto-Sklearn 2.0 vs Manual</a></h4>
+                <div class="post-date">Oct 28, 2025</div>
+              </div>
+            </li>
+            <li class="popular-post">
+              <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" alt="pymfe">
+              <div>
+                <h4><a href="#">pymfe Tutorial in 5 Steps</a></h4>
+                <div class="post-date">Sep 25, 2025</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <h2>AUTOALGO</h2>
+      </div>
+      <div class="footer-center">
+        <p><a href="copyright.html">© Copyright 2025</a> | <a href="sitemap.html">Sitemap</a> | <a href="contact.html">Contact</a> | <a href="docs.html">Docs</a></p>
+        <p><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms</a></p>
+      </div>
+      <div class="footer-right">
+        <a href="https://github.com"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://twitter.com"><i class="fa-brands fa-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

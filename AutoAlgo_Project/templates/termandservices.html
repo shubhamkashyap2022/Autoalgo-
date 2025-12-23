@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Terms of Service - AutoAlgo Insight</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f7f7f7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: #1a5f7a;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      padding: 1rem;
+      color: white;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-left {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .nav-right a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 20px;
+    }
+
+    .nav-right a:hover {
+      text-decoration: underline;
+    }
+
+    .terms-container {
+      max-width: 800px;
+      margin: 100px auto 50px;
+      padding: 0 20px;
+    }
+
+    .terms-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .terms-header h1 {
+      font-size: 2.5rem;
+      color: #1a5f7a;
+      margin-bottom: 15px;
+    }
+
+    .terms-header p {
+      color: #666;
+      font-size: 1.1rem;
+    }
+
+    .terms-content {
+      background: white;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .terms-section {
+      margin-bottom: 30px;
+    }
+
+    .terms-section h2 {
+      color: #1a5f7a;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .terms-section h3 {
+      color: #1a5f7a;
+      font-size: 1.2rem;
+      margin: 20px 0 10px;
+    }
+
+    .terms-section p {
+      margin-bottom: 15px;
+      color: #555;
+    }
+
+    .terms-section ul {
+      padding-left: 20px;
+      margin-bottom: 15px;
+    }
+
+    .terms-section li {
+      margin-bottom: 8px;
+      color: #555;
+    }
+
+    .highlight {
+      background: #e8f4f8;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      border-left: 4px solid #1a5f7a;
+      margin: 15px 0;
+    }
+
+    .update-date {
+      font-style: italic;
+      color: #888;
+      margin-top: 40px;
+      text-align: right;
+    }
+
+    .site-footer {
+      background-color: #1a5f7a;
+      color: white;
+      padding: 30px 10px;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      gap: 20px;
+    }
+
+    .footer-left h2 {
+      font-family: 'Courier New', Courier, monospace;
+      letter-spacing: 4px;
+      font-size: 1.6rem;
+      color: #56b3aa;
+    }
+
+    .footer-center {
+      text-align: center;
+      flex: 1;
+    }
+
+    .footer-center a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+      font-size: 0.95rem;
+    }
+
+    .footer-center a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-right a {
+      margin: 0 10px;
+      font-size: 1.4rem;
+      color: #56b3aa;
+      text-decoration: none;
+    }
+
+    .footer-right a:hover {
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .terms-header h1 { font-size: 2rem; }
+      .terms-content { padding: 25px; }
+      .footer-container { flex-direction: column; text-align: center; }
+      .footer-right { margin-top: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left"><h1>AutoAlgo Insight</h1></div>
+    <div class="nav-right">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Terms Content -->
+  <main class="terms-container">
+    <div class="terms-header">
+      <h1>Terms of Service</h1>
+      <p>Please read these terms before using AutoAlgo Insight — an open-source AutoML platform.</p>
+    </div>
+
+    <div class="terms-content">
+      <!-- 1. Acceptance -->
+      <div class="terms-section">
+        <h2>1. Acceptance of Terms</h2>
+        <p>By using <strong>AutoAlgo Insight</strong> (the "Platform"), you agree to these Terms of Service. If you do not agree, please do not use the Platform.</p>
+      </div>
+
+      <!-- 2. Description -->
+      <div class="terms-section">
+        <h2>2. Description of Platform</h2>
+        <p>AutoAlgo Insight is a <strong>free, open-source</strong> web platform that helps users:</p>
+        <ul>
+          <li>Upload datasets (CSV/ARFF)</li>
+          <li>Extract meta-features using <code>pymfe</code></li>
+          <li>Get automated algorithm recommendations</li>
+          <li>Compare models with Auto-Sklearn & OpenML</li>
+        </ul>
+        <p><strong>No login required. No payment. No ads.</strong></p>
+      </div>
+
+      <!-- 3. Open Source License -->
+      <div class="terms-section">
+        <h2>3. Open-Source License (MIT)</h2>
+        <p>The source code is licensed under the <strong>MIT License</strong>. You may:</p>
+        <ul>
+          <li>Use, modify, and distribute the code</li>
+          <li>Deploy on your server</li>
+          <li>Fork on GitHub</li>
+        </ul>
+        <div class="highlight">
+          You must retain the original copyright and license notice in all copies.
+        </div>
+      </div>
+
+      <!-- 4. Acceptable Use -->
+      <div class="terms-section">
+        <h2>4. Acceptable Use</h2>
+        <p>You agree <strong>not</strong> to:</p>
+        <ul>
+          <li>Upload malicious, illegal, or copyrighted datasets</li>
+          <li>Use the platform for spam or DDoS</li>
+          <li>Reverse engineer the meta-learner without attribution</li>
+          <li>Remove "AutoAlgo Insight" branding without permission</li>
+          <li>Claim the project as your own in academic submissions</li>
+        </ul>
+      </div>
+
+      <!-- 5. User Content -->
+      <div class="terms-section">
+        <h2>5. Uploaded Datasets</h2>
+        <p>You retain full ownership of your uploaded data. However:</p>
+        <ul>
+          <li>Data is processed in memory and <strong>deleted after analysis</strong></li>
+          <li>We do <strong>not</strong> store, share, or use your data for training</li>
+          <li>You are responsible for ensuring data compliance (e.g., GDPR, no PII)</li>
+        </ul>
+      </div>
+
+      <!-- 6. OpenML Integration -->
+      <div class="terms-section">
+        <h2>6. OpenML API Usage</h2>
+        <p>When you fetch public datasets from OpenML:</p>
+        <ul>
+          <li>You agree to <a href="https://www.openml.org" target="_blank">OpenML's Terms</a></li>
+          <li>Your IP may be logged by OpenML servers</li>
+          <li>We do not control OpenML's data policies</li>
+        </ul>
+      </div>
+
+      <!-- 7. Disclaimer -->
+      <div class="terms-section">
+        <h2>7. No Warranty</h2>
+        <p>The Platform is provided "as is". We do <strong>not guarantee</strong>:</p>
+        <ul>
+          <li>100% accurate algorithm recommendations</li>
+          <li>Availability during high traffic</li>
+          <li>Compatibility with all datasets</li>
+        </ul>
+        <p>Use results at your own risk in production.</p>
+      </div>
+
+      <!-- 8. Limitation of Liability -->
+      <div class="terms-section">
+        <h2>8. Limitation of Liability</h2>
+        <p>We are not liable for any damages from using this free, open-source tool. Maximum liability: ₹0.</p>
+      </div>
+
+      <!-- 9. Termination -->
+      <div class="terms-section">
+        <h2>9. Termination</h2>
+        <p>We may block access if you violate these terms (e.g., abuse, scraping).</p>
+      </div>
+
+      <!-- 10. Changes -->
+      <div class="terms-section">
+        <h2>10. Changes to Terms</h2>
+        <p>We may update these terms. Continued use means acceptance.</p>
+      </div>
+
+      <!-- 11. Governing Law -->
+      <div class="terms-section">
+        <h2>11. Governing Law</h2>
+        <p>These terms are governed by the laws of <strong>India</strong>. Disputes shall be resolved in <strong>Jaipur, Rajasthan</strong>.</p>
+      </div>
+
+      <!-- 12. Contact -->
+      <div class="terms-section">
+        <h2>12. Contact Us</h2>
+        <p>For questions about these Terms:</p>
+        <p>
+          <strong>AutoAlgo Insight Team</strong><br>
+          Email: <a href="mailto:maazahmadcool@gmail.com">maazahmadcool@gmail.com</a><br>
+          Location: Bakoliya PG, Hill View Enclave, Near New RTO, Jaipur, Rajasthan 302017
+        </p>
+      </div>
+
+      <p class="update-date">Last Updated: November 08, 2025</p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <h2>AUTOALGO</h2>
+      </div>
+      <div class="footer-center">
+        <p><a href="copyright.html">© Copyright 2025</a> | <a href="sitemap.html">Sitemap</a> | <a href="contact.html">Contact</a> | <a href="docs.html">Docs</a></p>
+        <p><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms</a></p>
+      </div>
+      <div class="footer-right">
+        <a href="https://github.com"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="mailto:maazahmadcool@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

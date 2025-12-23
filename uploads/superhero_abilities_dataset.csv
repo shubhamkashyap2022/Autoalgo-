@@ -1,0 +1,201 @@
+Name,Universe,Power_Score,Popularity_Score
+Iron Man #1,Marvel,65,40
+Batman #1,DC,94,98
+Joker #1,Marvel,62,40
+Thor #1,Marvel,83,91
+Thanos #1,Marvel,78,77
+Wonder Woman #1,DC,54,33
+Spider-Man #1,Marvel,95,6
+Green Lantern #1,Marvel,88,88
+Deadpool #1,Marvel,43,19
+Black Panther #1,DC,68,80
+Loki #1,Marvel,61,40
+Captain America #1,Marvel,64,92
+Superman #1,Marvel,52,97
+Harley Quinn #1,Marvel,57,59
+Flash #1,DC,72,59
+Doctor Strange #1,Marvel,55,48
+Hulk #1,DC,84,41
+Aquaman #1,DC,81,13
+Catwoman #1,DC,83,45
+Wolverine #1,Marvel,41,89
+Iron Man #2,DC,94,53
+Batman #2,Marvel,74,42
+Joker #2,DC,81,100
+Thor #2,DC,73,63
+Thanos #2,DC,69,27
+Wonder Woman #2,DC,98,38
+Spider-Man #2,DC,94,60
+Green Lantern #2,DC,52,7
+Deadpool #2,DC,52,5
+Black Panther #2,DC,57,45
+Loki #2,Marvel,71,58
+Captain America #2,Marvel,71,31
+Superman #2,DC,74,23
+Harley Quinn #2,DC,98,42
+Flash #2,DC,78,10
+Doctor Strange #2,Marvel,85,32
+Hulk #2,DC,91,53
+Aquaman #2,Marvel,68,30
+Catwoman #2,Marvel,88,39
+Wolverine #2,Marvel,68,31
+Iron Man #3,Marvel,92,82
+Batman #3,Marvel,83,100
+Joker #3,DC,96,2
+Thor #3,DC,55,78
+Thanos #3,DC,95,77
+Wonder Woman #3,DC,83,93
+Spider-Man #3,DC,86,12
+Green Lantern #3,Marvel,96,39
+Deadpool #3,DC,49,66
+Black Panther #3,DC,69,96
+Loki #3,Marvel,64,13
+Captain America #3,DC,78,46
+Superman #3,Marvel,59,27
+Harley Quinn #3,DC,44,17
+Flash #3,Marvel,40,95
+Doctor Strange #3,DC,69,98
+Hulk #3,DC,88,60
+Aquaman #3,Marvel,42,64
+Catwoman #3,Marvel,84,88
+Wolverine #3,Marvel,53,35
+Iron Man #4,Marvel,95,70
+Batman #4,Marvel,69,83
+Joker #4,Marvel,89,30
+Thor #4,Marvel,43,71
+Thanos #4,Marvel,57,74
+Wonder Woman #4,DC,76,96
+Spider-Man #4,DC,64,98
+Green Lantern #4,Marvel,87,63
+Deadpool #4,DC,40,28
+Black Panther #4,DC,92,60
+Loki #4,DC,85,79
+Captain America #4,DC,54,94
+Superman #4,Marvel,48,37
+Harley Quinn #4,DC,54,93
+Flash #4,Marvel,88,22
+Doctor Strange #4,DC,96,68
+Hulk #4,DC,63,20
+Aquaman #4,DC,43,96
+Catwoman #4,Marvel,51,100
+Wolverine #4,DC,98,68
+Iron Man #5,Marvel,97,91
+Batman #5,DC,76,64
+Joker #5,Marvel,100,17
+Thor #5,DC,76,12
+Thanos #5,Marvel,82,22
+Wonder Woman #5,Marvel,99,17
+Spider-Man #5,DC,45,10
+Green Lantern #5,Marvel,78,65
+Deadpool #5,DC,95,22
+Black Panther #5,DC,85,90
+Loki #5,DC,63,82
+Captain America #5,DC,50,50
+Superman #5,DC,52,14
+Harley Quinn #5,DC,73,64
+Flash #5,DC,64,47
+Doctor Strange #5,DC,46,29
+Hulk #5,DC,91,76
+Aquaman #5,DC,43,36
+Catwoman #5,DC,98,99
+Wolverine #5,Marvel,47,52
+Iron Man #6,Marvel,59,76
+Batman #6,DC,68,7
+Joker #6,DC,93,29
+Thor #6,DC,92,11
+Thanos #6,DC,90,33
+Wonder Woman #6,DC,84,6
+Spider-Man #6,DC,85,79
+Green Lantern #6,DC,49,32
+Deadpool #6,DC,82,51
+Black Panther #6,Marvel,73,75
+Loki #6,DC,96,58
+Captain America #6,Marvel,65,87
+Superman #6,DC,80,26
+Harley Quinn #6,DC,88,98
+Flash #6,Marvel,97,46
+Doctor Strange #6,DC,42,98
+Hulk #6,Marvel,95,29
+Aquaman #6,DC,45,4
+Catwoman #6,DC,44,81
+Wolverine #6,Marvel,44,99
+Iron Man #7,DC,93,13
+Batman #7,Marvel,86,39
+Joker #7,DC,62,15
+Thor #7,Marvel,88,29
+Thanos #7,Marvel,48,29
+Wonder Woman #7,DC,74,75
+Spider-Man #7,DC,59,32
+Green Lantern #7,Marvel,97,2
+Deadpool #7,DC,88,47
+Black Panther #7,DC,100,78
+Loki #7,DC,98,84
+Captain America #7,Marvel,81,22
+Superman #7,Marvel,74,75
+Harley Quinn #7,Marvel,89,27
+Flash #7,Marvel,57,67
+Doctor Strange #7,Marvel,56,81
+Hulk #7,Marvel,63,56
+Aquaman #7,Marvel,42,92
+Catwoman #7,Marvel,71,93
+Wolverine #7,Marvel,74,21
+Iron Man #8,DC,77,47
+Batman #8,Marvel,52,80
+Joker #8,DC,95,59
+Thor #8,DC,100,84
+Thanos #8,DC,86,6
+Wonder Woman #8,Marvel,64,19
+Spider-Man #8,Marvel,48,57
+Green Lantern #8,Marvel,43,69
+Deadpool #8,Marvel,53,3
+Black Panther #8,DC,76,1
+Loki #8,Marvel,73,58
+Captain America #8,Marvel,50,38
+Superman #8,Marvel,80,15
+Harley Quinn #8,Marvel,95,34
+Flash #8,Marvel,42,61
+Doctor Strange #8,DC,98,35
+Hulk #8,Marvel,67,64
+Aquaman #8,DC,68,25
+Catwoman #8,Marvel,48,24
+Wolverine #8,DC,42,12
+Iron Man #9,Marvel,64,18
+Batman #9,Marvel,73,15
+Joker #9,DC,51,80
+Thor #9,DC,81,27
+Thanos #9,DC,48,72
+Wonder Woman #9,Marvel,54,60
+Spider-Man #9,DC,79,46
+Green Lantern #9,Marvel,64,89
+Deadpool #9,Marvel,44,17
+Black Panther #9,DC,50,93
+Loki #9,DC,98,53
+Captain America #9,Marvel,73,8
+Superman #9,Marvel,63,79
+Harley Quinn #9,DC,99,27
+Flash #9,DC,54,46
+Doctor Strange #9,DC,77,50
+Hulk #9,Marvel,47,71
+Aquaman #9,Marvel,98,3
+Catwoman #9,Marvel,44,93
+Wolverine #9,Marvel,87,64
+Iron Man #10,Marvel,65,44
+Batman #10,Marvel,57,53
+Joker #10,DC,45,24
+Thor #10,Marvel,76,60
+Thanos #10,Marvel,99,3
+Wonder Woman #10,Marvel,87,20
+Spider-Man #10,DC,52,46
+Green Lantern #10,Marvel,67,15
+Deadpool #10,Marvel,44,25
+Black Panther #10,DC,52,94
+Loki #10,Marvel,56,78
+Captain America #10,Marvel,89,71
+Superman #10,Marvel,79,17
+Harley Quinn #10,Marvel,84,84
+Flash #10,Marvel,71,100
+Doctor Strange #10,DC,68,9
+Hulk #10,DC,90,38
+Aquaman #10,DC,97,48
+Catwoman #10,Marvel,42,60
+Wolverine #10,Marvel,95,63

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>AutoAlgo Insight</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #1a5f7a;
+      padding: 15px 25px;
+      color: white;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 18px;
+    }
+
+    /* MAIN */
+    .main-content {
+      padding-top: 110px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+      text-align: center;
+    }
+
+    h1 {
+      color: #1a5f7a;
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+    }
+
+    .description {
+      color: #555;
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    /* UPLOAD */
+    .upload-box {
+      border: 2px dashed #1a5f7a;
+      padding: 30px;
+      margin: 25px 0;
+      border-radius: 10px;
+    }
+
+    .upload-box input[type="file"] {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .analyze-btn {
+      background: #56b3aa;
+      color: white;
+      padding: 14px 32px;
+      border: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    .analyze-btn:hover {
+      background: #3d8a81;
+    }
+
+    /* RESULTS */
+    .result-box {
+      text-align: left;
+      margin-top: 35px;
+    }
+
+    .result-box p {
+      font-size: 1.05rem;
+      margin: 8px 0;
+      color: #333;
+    }
+
+    .result-box strong {
+      color: #1a5f7a;
+    }
+
+    .graphs img {
+      max-width: 100%;
+      margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #1a5f7a;
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div><strong>AutoAlgo Insight</strong></div>
+  <div>
+    <a href="home.html">Home</a>
+    <a href="main.html">Analyze</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href=""></a>
+    <a href=""></a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<div class="main-content">
+
+  <div class="container">
+    <h1>Automated Algorithm Recommendation</h1>
+    <p class="description">
+      Upload your dataset and automatically get the <strong>best ML algorithm</strong>
+      with real visual outputs.
+    </p>
+
+    <!-- FILE UPLOAD FORM (FLASK) -->
+    <div class="upload-box">
+      <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".csv,.xlsx,.xls" required>
+        <br>
+        <button class="analyze-btn">Upload & Analyze</button>
+      </form>
+    </div>
+
+    <!-- RESULT SECTION -->
+    {% if result_ready %}
+    <div class="result-box">
+      <hr>
+      <p><strong>Task Type:</strong> {{ task }}</p>
+      <p><strong>Algorithm Selected:</strong> {{ algo }}</p>
+      <p><strong>Model Score:</strong> {{ score }}</p>
+      <p><strong>Total Records:</strong> {{ rows }}</p>
+
+      <h2 style="margin-top:25px; color:#1a5f7a;">📊 Visual Analysis</h2>
+
+      <div class="graphs">
+        {% for graph in graphs %}
+          <img src="{{ url_for('static', filename=graph) }}">
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  © 2025 AutoAlgo Insight | Built for ML Students & Researchers
+</footer>
+</body>
+</html>

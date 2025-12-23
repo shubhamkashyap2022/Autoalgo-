@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Copyright & License - AutoAlgo Insight</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f7f7f7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: #1a5f7a;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      padding: 1rem;
+      color: white;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-left {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .nav-right a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 20px;
+    }
+
+    .nav-right a:hover {
+      text-decoration: underline;
+    }
+
+    .copyright-container {
+      max-width: 800px;
+      margin: 100px auto 50px;
+      padding: 0 20px;
+    }
+
+    .copyright-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .copyright-header h1 {
+      font-size: 2.2rem;
+      color: #1a5f7a;
+      margin-bottom: 15px;
+    }
+
+    .copyright-header p {
+      font-size: 1rem;
+      color: #666;
+    }
+
+    .copyright-content {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .copyright-section {
+      margin-bottom: 30px;
+    }
+
+    .copyright-section h2 {
+      color: #1a5f7a;
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .copyright-section p {
+      margin-bottom: 15px;
+    }
+
+    .copyright-section ul {
+      padding-left: 20px;
+      margin-bottom: 15px;
+    }
+
+    .copyright-section li {
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    .copyright-section li:before {
+      content: "\f058";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      color: #1a5f7a;
+      position: absolute;
+      left: -20px;
+    }
+
+    .highlight {
+      background: #e8f4f8;
+      padding: 15px;
+      border-radius: 6px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.95rem;
+      margin: 15px 0;
+      border-left: 4px solid #1a5f7a;
+    }
+
+    .site-footer {
+      background-color: #1a5f7a;
+      color: white;
+      padding: 30px 10px;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      gap: 20px;
+    }
+
+    .footer-left h2 {
+      font-family: 'Courier New', Courier, monospace;
+      letter-spacing: 4px;
+      font-size: 1.6rem;
+      color: #56b3aa;
+    }
+
+    .footer-center {
+      text-align: center;
+      flex: 1;
+    }
+
+    .footer-center a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+      font-size: 0.95rem;
+    }
+
+    .footer-center a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-right a {
+      margin: 0 10px;
+      font-size: 1.4rem;
+      color: #56b3aa;
+      text-decoration: none;
+    }
+
+    .footer-right a:hover {
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .copyright-header h1 { font-size: 1.8rem; }
+      .footer-container { flex-direction: column; text-align: center; }
+      .footer-right { margin-top: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left"><h1>AutoAlgo Insight</h1></div>
+    <div class="nav-right">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Copyright Content -->
+  <main class="copyright-container">
+    <div class="copyright-header">
+      <h1>Copyright & Open-Source License</h1>
+      <p>Last Updated: November 07, 2025</p>
+    </div>
+
+    <div class="copyright-content">
+      <!-- Copyright -->
+      <div class="copyright-section">
+        <h2>Copyright Information</h2>
+        <p>All content on this website, including text, documentation, design, and UI elements, is the property of <strong>AutoAlgo Insight Team</strong> and protected by Indian and international copyright laws.</p>
+        <p><strong>© 2025 AutoAlgo Insight. All rights reserved.</strong></p>
+      </div>
+
+      <!-- Open Source License -->
+      <div class="copyright-section">
+        <h2>Open-Source License (MIT)</h2>
+        <p>The <strong>source code</strong> of this platform (backend, meta-learning models, web interface) is released under the <strong>MIT License</strong> — free for personal, academic, and commercial use.</p>
+
+        <div class="highlight">
+          Permission is hereby granted, free of charge, to any person obtaining a copy of this software...<br>
+          <em>The above copyright notice and this permission notice shall be included in all copies...</em>
+        </div>
+
+        <p><strong>Full License:</strong> <a href="https://opensource.org/licenses/MIT" target="_blank">opensource.org/licenses/MIT</a></p>
+      </div>
+
+      <!-- Permitted Use -->
+      <div class="copyright-section">
+        <h2>Permitted Use</h2>
+        <p>You are allowed to:</p>
+        <ul>
+          <li>Use the web platform for algorithm recommendation</li>
+          <li>Fork and modify the open-source code (with attribution)</li>
+          <li>Use in academic projects, research, or startups</li>
+          <li>Deploy on your server for personal use</li>
+        </ul>
+      </div>
+
+      <!-- Restrictions -->
+      <div class="copyright-section">
+        <h2>Restrictions</h2>
+        <p>You may <strong>not</strong>:</p>
+        <ul>
+          <li>Remove the "Powered by AutoAlgo Insight" footer</li>
+          <li>Claim the project as your own without credit</li>
+          <li>Sell the source code as a paid product</li>
+          <li>Use the logo or branding for commercial products without permission</li>
+        </ul>
+      </div>
+
+      <!-- Attribution -->
+      <div class="copyright-section">
+        <h2>Attribution</h2>
+        <p>If you use or modify this project, please include:</p>
+        <div class="highlight">
+          AutoAlgo Insight — Automated Algorithm Selection Platform<br>
+          Developed by: Shubham Kashyap, Zakir Ahmed, Rishu Raj<br>
+          Jaipur National University | Guide: Mr. Hitendra Agarwal<br>
+          GitHub: <a href="https://github.com/your-repo" target="_blank">github.com/your-repo</a>
+        </div>
+      </div>
+
+      <!-- Contact for Licensing -->
+      <div class="copyright-section">
+        <h2>Commercial Licensing & Support</h2>
+        <p>For enterprise deployment, custom features, or removal of attribution:</p>
+        <p><strong>Email:</strong> <a href="mailto:maazahmadcool@gmail.com">maazahmadcool@gmail.com</a></p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <h2>AUTOALGO</h2>
+      </div>
+      <div class="footer-center">
+        <p><a href="copyright.html">© Copyright 2025</a> | <a href="sitemap.html">Sitemap</a> | <a href="contact.html">Contact</a> | <a href="docs.html">Docs</a></p>
+        <p><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms</a></p>
+      </div>
+      <div class="footer-right">
+        <a href="https://github.com"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="mailto:maazahmadcool@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

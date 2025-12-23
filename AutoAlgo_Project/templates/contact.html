@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Contact Us - AutoAlgo Insight</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f7f7f7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: #1a5f7a;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      padding: 1rem;
+      color: white;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-left {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .nav-right a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 20px;
+    }
+
+    .nav-right a:hover {
+      text-decoration: underline;
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 120px;
+      padding-bottom: 50px;
+    }
+
+    .contact-header {
+      text-align: center;
+      margin-bottom: 40px;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    .contact-header h1 {
+      font-size: 2.8rem;
+      color: #1a5f7a;
+      margin-bottom: 20px;
+    }
+
+    .contact-header p {
+      font-size: 1.2rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1200px;
+      width: 100%;
+      padding: 0 20px;
+    }
+
+    .contact-info {
+      flex: 1;
+      min-width: 300px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      padding: 30px;
+    }
+
+    .contact-info h2 {
+      color: #1a5f7a;
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 25px;
+    }
+
+    .info-icon {
+      color: #1a5f7a;
+      font-size: 1.5rem;
+      margin-right: 20px;
+      margin-top: 5px;
+    }
+
+    .info-content h3 {
+      color: #333;
+      margin-bottom: 5px;
+      font-size: 1.2rem;
+    }
+
+    .info-content p, .info-content a {
+      color: #666;
+      line-height: 1.6;
+      text-decoration: none;
+    }
+
+    .info-content a:hover {
+      color: #1a5f7a;
+      text-decoration: underline;
+    }
+
+    .contact-form {
+      flex: 1;
+      min-width: 300px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      padding: 30px;
+    }
+
+    .contact-form h2 {
+      color: #1a5f7a;
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      color: #333;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      background-color: #1a5f7a;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #0f3d56;
+    }
+
+    .map-container {
+      width: 100%;
+      max-width: 1200px;
+      margin-top: 40px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+    }
+
+    .site-footer {
+      background-color: #1a5f7a;
+      color: white;
+      padding: 30px 10px;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      gap: 20px;
+    }
+
+    .footer-left h2 {
+      font-family: 'Courier New', Courier, monospace;
+      letter-spacing: 4px;
+      font-size: 1.6rem;
+      color: #56b3aa;
+    }
+
+    .footer-center {
+      text-align: center;
+      flex: 1;
+    }
+
+    .footer-center a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+      font-size: 0.95rem;
+    }
+
+    .footer-center a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-right a {
+      margin: 0 10px;
+      font-size: 1.4rem;
+      color: #56b3aa;
+      text-decoration: none;
+    }
+
+    .footer-right a:hover {
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .contact-header h1 { font-size: 2.2rem; }
+      .footer-container { flex-direction: column; text-align: center; }
+      .footer-right { margin-top: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-left"><h1>AutoAlgo Insight</h1></div>
+    <div class="nav-right">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="contact-header">
+      <h1>Contact Us</h1>
+      <p>Have questions about AutoML, meta-learning, or algorithm recommendation? Need help with your dataset? Reach out — we're here to help!</p>
+    </div>
+
+    <div class="contact-container">
+      <div class="contact-info">
+        <h2>Get In Touch</h2>
+        
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="info-content">
+            <h3>Our Location</h3>
+            <p>Bakoliya PG<br>Hill View Enclave, Near New RTO<br>Jaipur, Rajasthan 302017<br>India</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div class="info-content">
+            <h3>Phone</h3>
+            <p><a href="tel:+918877474927">+91 88774 74927</a></p>
+            <p>Mon-Fri: 10 AM - 6 PM IST</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="info-content">
+            <h3>Email</h3>
+            <p><a href="mailto:maazahmadcool@gmail.com">maazahmadcool@gmail.com</a></p>
+            <p>Support & Queries</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fab fa-github"></i>
+          </div>
+          <div class="info-content">
+            <h3>Connect With Us</h3>
+            <p>
+              <a href="https://github.com" style="margin-right: 15px;">GitHub</a>
+              <a href="https://linkedin.com" style="margin-right: 15px;">LinkedIn</a>
+              <a href="mailto:maazahmadcool@gmail.com">Email</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h2>Send Us a Message</h2>
+        
+        <form action="/contact.html" method="POST">
+          
+          {% if success_message %}
+            <div style="color: green; background-color: #e8f5e9; padding: 10px; border-radius: 5px; margin-bottom: 15px; font-weight: bold; text-align: center;">
+              {{ success_message }}
+            </div>
+          {% endif %}
+
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required placeholder="John Doe">
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required placeholder="john@example.com">
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required placeholder="Algorithm Recommendation Help">
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" required placeholder="Tell us about your dataset or query..."></textarea>
+          </div>
+          
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="map-container">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.123456789!2d75.787271!3d26.912434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db5d5d5d5d5d5%3A0x1234567890abcdef!2sBakoliya%20PG%2C%20Hill%20View%20Enclave%2C%20Near%20New%20RTO%2C%20Jaipur!5e0!3m2!1sen!2sin!4v1698765432100!5m2!1sen!2sin" 
+        allowfullscreen="" 
+        loading="lazy">
+      </iframe>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <h2>AUTOALGO</h2>
+      </div>
+      <div class="footer-center">
+        <p><a href="copyright.html">© Copyright 2025</a> | <a href="sitemap.html">Sitemap</a> | <a href="contact.html">Contact</a> | <a href="docs.html">Docs</a></p>
+        <p><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms</a></p>
+      </div>
+      <div class="footer-right">
+        <a href="https://github.com"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="mailto:maazahmadcool@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

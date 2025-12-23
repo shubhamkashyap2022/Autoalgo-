@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>About Us - AutoAlgo Insight</title>
+  <style>
+     * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #1a5f7a;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      padding: 1rem 2rem;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .navbar .nav-left h1 {
+      margin: 0;
+      font-size: 24px;
+      color: white;
+      white-space: nowrap;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-right a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-right a:hover {
+      text-decoration: underline;
+    }
+
+    .about-section {
+      max-width: 1000px;
+      margin: 120px auto 40px;
+      padding: 30px;
+      background: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    .about-section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      color: #1a5f7a;
+    }
+
+    .about-section p {
+      line-height: 1.7;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .about-section ul {
+      padding-left: 25px;
+      margin-bottom: 20px;
+      list-style: none;
+    }
+
+    .about-section li {
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 30px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .about-section li:before {
+      content: "\f058";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      color: #1a5f7a;
+      position: absolute;
+      left: 0;
+      top: 2px;
+    }
+
+    .team-section {
+      background: #e8f4f8;
+      padding: 40px 20px;
+    }
+
+    .team-section h3 {
+      text-align: center;
+      font-size: 2rem;
+      color: #1a5f7a;
+      margin-bottom: 30px;
+    }
+
+    .team-members {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .member-card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      width: 240px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .member-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .member-card .avatar {
+      width: 90px;
+      height: 90px;
+      background: #1a5f7a;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .member-card h4 {
+      margin: 10px 0 5px;
+      color: #1a5f7a;
+      font-size: 1.1rem;
+    }
+
+    .member-card p {
+      font-size: 0.9rem;
+      color: #555;
+      margin: 5px 0;
+    }
+
+    .member-card .erp {
+      font-size: 0.8rem;
+      color: #888;
+      font-style: italic;
+    }
+
+    .site-footer {
+      background-color: #1a5f7a;
+      color: white;
+      padding: 30px 10px;
+      font-size: 0.9rem;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      gap: 20px;
+    }
+
+    .footer-left h2 {
+      font-family: 'Courier New', Courier, monospace;
+      letter-spacing: 4px;
+      font-size: 1.6rem;
+      color: #56b3aa;
+    }
+
+    .footer-center {
+      text-align: center;
+      flex: 1;
+    }
+
+    .footer-center a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+      font-size: 0.95rem;
+    }
+
+    .footer-center a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-right a {
+      margin: 0 10px;
+      font-size: 1.4rem;
+      color: #56b3aa;
+      text-decoration: none;
+    }
+
+    .footer-right a:hover {
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .team-members {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .navbar .nav-left h1 {
+        font-size: 20px;
+      }
+
+      .nav-right {
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-left"><h1>AutoAlgo Insight</h1></div>
+    <div class="nav-right">
+      <a href="home.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <section class="about-section">
+    <h2>About the Project</h2>
+    <p>
+      <strong>Automated Algorithm Insight and Analysis Platform</strong> is an intelligent AutoML system that helps users select the best machine learning algorithm for their dataset — <em>without writing a single line of code</em>.
+    </p>
+    <p>
+      Using <strong>meta-learning</strong>, the platform computes dataset meta-features (statistical, information-theoretic, landmarking) and predicts top-performing algorithms with estimated accuracy — <em>before training</em>.
+    </p>
+    <p>
+      Built on cutting-edge research, this project combines practical AutoML with academic rigor to democratize machine learning for students, researchers, and data enthusiasts.
+    </p>
+
+    <p><strong>Key Highlights:</strong></p>
+    <ul>
+      <li>Auto-detects task: Classification, Regression, or Clustering</li>
+      <li>Extracts 50+ meta-features using <code>pymfe</code></li>
+      <li>Recommends top 3 algorithms with performance estimates</li>
+      <li>One-click training, evaluation, and model download (.pkl)</li>
+      <li>Research-backed: Auto-Sklearn, Rivolli et al., Tornede et al., Garouani et al.</li>
+    </ul>
+
+    <p>
+      This project is developed as part of the <strong>7th Semester Minnor Project</strong> at <strong>Jaipur National University</strong>, under the guidance of <strong>Mr. Hitendra Agarwal</strong>.
+    </p>
+
+    <p><em>We aim to make machine learning accessible, efficient, and insightful for everyone.</em></p>
+  </section>
+
+  <div class="team-section">
+    <h3>Meet the Team</h3>
+    <div class="team-members">
+      <!-- Shubham Kashyap -->
+      <div class="member-card">
+        <div class="avatar">S</div>
+        <h4>Shubham Kashyap</h4>
+        <p>Team Lead & Model Training</p>
+        <p class="erp">ERP ID: R41679</p>
+      </div>
+
+      <!-- Zakir Ahmed -->
+      <div class="member-card">
+        <div class="avatar">Z</div>
+        <h4>Zakir Ahmad</h4>
+        <p>Frontent Web Developer</p>
+        <p class="erp">ERP ID: R41576</p>
+      </div>
+
+      <!-- Rishu Raj -->
+      <div class="member-card">
+        <div class="avatar">R</div>
+        <h4>Rishu Raj</h4>
+        <p>Backend & ML Integration</p>
+        <p class="erp">ERP ID: R33040</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <h2>AUTOALGO</h2>
+      </div>
+      <div class="footer-center">
+        <p><a href="copyright.html">© Copyright 2025</a> | <a href="sitemap.html">Sitemap</a> | <a href="contact.html">Contact</a> | <a href="docs.html">Docs</a></p>
+        <p><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms</a></p>
+      </div>
+      <div class="footer-right">
+        <a href="https://github.com"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://twitter.com"><i class="fa-brands fa-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

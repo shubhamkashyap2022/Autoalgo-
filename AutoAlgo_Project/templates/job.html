@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Careers - AutoAlgo Insight</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f7f7f7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: #1a5f7a;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      padding: 1rem;
+      color: white;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-left {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .nav-right a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 20px;
+    }
+
+    .nav-right a:hover {
+      text-decoration: underline;
+    }
+
+    .jobs-hero {
+      background: linear-gradient(135deg, #1a5f7a 0%, #56b3aa 100%);
+      color: white;
+      text-align: center;
+      padding: 150px 20px 80px;
+      margin-top: 60px;
+    }
+
+    .jobs-hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+
+    .jobs-hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: white;
+      color: #1a5f7a;
+      padding: 15px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .jobs-container {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .jobs-intro {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .jobs-intro h2 {
+      font-size: 2rem;
+      color: #1a5f7a;
+      margin-bottom: 20px;
+    }
+
+    .jobs-intro p {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .job-listings {
+      display: grid;
+      gap: 25px;
+    }
+
+    .job-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      padding: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    .job-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+
+    .job-title {
+      font-size: 1.4rem;
+      color: #1a5f7a;
+      margin-bottom: 5px;
+    }
+
+    .job-meta {
+      display: flex;
+      gap: 15px;
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    .job-meta span {
+      display: flex;
+      align-items: center;
+    }
+
+    .job-meta i {
+      margin-right: 5px;
+      color: #56b3aa;
+    }
+
+    .job-description {
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .job-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .job-tag {
+      background: #e8f4f8;
+      color: #1a5f7a;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    .apply-btn {
+      display: inline-block;
+      background: #1a5f7a;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+
+    .apply-btn:hover {
+      background: #0f3d56;
+    }
+
+    .benefits-section {
+      background: #e8f4f8;
+      padding: 60px 20px;
+      margin-top: 40px;
+    }
+
+    .benefits-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .benefits-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .benefits-header h2 {
+      font-size: 2rem;
+      color: #1a5f7a;
+      margin-bottom: 15px;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .benefit-card {
+      background: white;
+      border-radius: 8px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .benefit-icon {
+      font-size: 2.5rem;
+      color: #56b3aa;
+      margin-bottom: 15px;
+    }
+
+    .benefit-card h3 {
+      color: #1a5f7a;
+      margin-bottom: 10px;
+    }
+
+    .benefit-card p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    .site-footer {
+      background-color: #1a5f7a;
+      color: white;
+      padding: 30px 10px;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      gap: 20px;
+    }
+
+    .footer-left h2 {
+      font-family: 'Courier New', Courier, monospace;
+      letter-spacing: 4px;
+      font-size: 1.6rem;
+      color: #56b3aa;
+    }
+
+    .footer-center {
+      text-align: center;
+      flex: 1;
+    }
+
+    .footer-center a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+      font-size: 0.95rem;
+    }
+
+    .footer-center a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-right a {
+      margin: 0 10px;
+      font-size: 1.4rem;
+      color: #56b3aa;
+      text-decoration: none;
+    }
+
+    .footer-right a:hover {
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .jobs-hero h1 { font-size: 2.2rem; }
+      .job-header { flex-direction: column; }
+      .footer-container { flex-direction: column; text-align: center; }
+      .footer-right { margin-top: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left"><h1>AutoAlgo Insight</h1></div>
+    <div class="nav-right">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="jobs-hero">
+    <h1>Join the AutoML Revolution</h1>
+    <p>Help us build the future of automated algorithm selection — making machine learning accessible to everyone.</p>
+    <a href="#open-positions" class="cta-button">View Open Positions</a>
+  </section>
+
+  <!-- Job Listings -->
+  <div class="jobs-container" id="open-positions">
+    <div class="jobs-intro">
+      <h2>Current Openings</h2>
+      <p>We're expanding our team to scale AutoML research and deployment. Passionate about meta-learning? Join us!</p>
+    </div>
+
+    <div class="job-listings">
+
+      <!-- Job 1 -->
+      <div class="job-card">
+        <div class="job-header">
+          <div>
+            <h3 class="job-title">AutoML Research Engineer</h3>
+            <div class="job-meta">
+              <span>Location Jaipur / Remote</span>
+              <span>Briefcase Full-time</span>
+              <span>Rupee ₹10–15 LPA</span>
+            </div>
+          </div>
+          <a href="mailto:maazahmadcool@gmail.com?subject=Apply: AutoML Research Engineer" class="apply-btn">Apply Now</a>
+        </div>
+        <p class="job-description">
+          Lead research in meta-learning, algorithm recommendation, and performance prediction using OpenML, pymfe, and Auto-Sklearn.
+        </p>
+        <div class="job-tags">
+          <span class="job-tag">Python</span>
+          <span class="job-tag">AutoML</span>
+          <span class="job-tag">pymfe</span>
+          <span class="job-tag">Research</span>
+        </div>
+      </div>
+
+      <!-- Job 2 -->
+      <div class="job-card">
+        <div class="job-header">
+          <div>
+            <h3 class="job-title">Full-Stack ML Developer</h3>
+            <div class="job-meta">
+              <span>Location Jaipur / Remote</span>
+              <span>Briefcase Full-time</span>
+              <span>Rupee ₹8–12 LPA</span>
+            </div>
+          </div>
+          <a href="mailto:maazahmadcool@gmail.com?subject=Apply: Full-Stack ML Developer" class="apply-btn">Apply Now</a>
+        </div>
+        <p class="job-description">
+          Build web interfaces for model training, meta-feature extraction, and result visualization. Connect Flask/FastAPI with frontend.
+        </p>
+        <div class="job-tags">
+          <span class="job-tag">Flask</span>
+          <span class="job-tag">React</span>
+          <span class="job-tag">Docker</span>
+          <span class="job-tag">API</span>
+        </div>
+      </div>
+
+      <!-- Job 3 -->
+      <div class="job-card">
+        <div class="job-header">
+          <div>
+            <h3 class="job-title">Data Scientist (Meta-Learning)</h3>
+            <div class="job-meta">
+              <span>Location Remote</span>
+              <span>Briefcase Full-time / Internship</span>
+              <span>Rupee ₹6–10 LPA</span>
+            </div>
+          </div>
+          <a href="mailto:maazahmadcool@gmail.com?subject=Apply: Data Scientist" class="apply-btn">Apply Now</a>
+        </div>
+        <p class="job-description">
+          Analyze 100+ datasets from OpenML, extract meta-features, train meta-learners, and publish findings.
+        </p>
+        <div class="job-tags">
+          <span class="job-tag">Scikit-learn</span>
+          <span class="job-tag">Pandas</span>
+          <span class="job-tag">OpenML</span>
+          <span class="job-tag">Jupyter</span>
+        </div>
+      </div>
+
+      <!-- Job 4 -->
+      <div class="job-card">
+        <div class="job-header">
+          <div>
+            <h3 class="job-title">Open-Source Contributor</h3>
+            <div class="job-meta">
+              <span>Location Remote</span>
+              <span>Briefcase Part-time / Volunteer</span>
+              <span>Rupee Stipend + Certificate</span>
+            </div>
+          </div>
+          <a href="https://github.com" target="_blank" class="apply-btn">Contribute on GitHub</a>
+        </div>
+        <p class="job-description">
+          Help improve documentation, add new algorithms, fix bugs, or write tutorials. Great for students & researchers.
+        </p>
+        <div class="job-tags">
+          <span class="job-tag">GitHub</span>
+          <span class="job-tag">Open Source</span>
+          <span class="job-tag">Documentation</span>
+          <span class="job-tag">Community</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Benefits Section -->
+  <section class="benefits-section">
+    <div class="benefits-container">
+      <div class="benefits-header">
+        <h2>Why Join AutoAlgo Insight?</h2>
+        <p>Open-source, research-driven, and student-friendly culture</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">Code</div>
+          <h3>Open Source</h3>
+          <p>Your code goes to GitHub — build your portfolio</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">Laptop</div>
+          <h3>Remote First</h3>
+          <p>Work from anywhere — Jaipur, Delhi, or home</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">GraduationCap</div>
+          <h3>Learning</h3>
+          <p>Access to research papers, mentorship, conferences</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">Trophy</div>
+          <h3>Recognition</h3>
+          <p>Co-authorship in papers, certificates, LinkedIn badges</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">Users</div>
+          <h3>Community</h3>
+          <p>Slack, weekly syncs, hackathons, team retreats</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">Lightbulb</div>
+          <h3>Impact</h3>
+          <p>Help 1000+ students pick the right ML algorithm</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <h2>AUTOALGO</h2>
+      </div>
+      <div class="footer-center">
+        <p><a href="copyright.html">© Copyright 2025</a> | <a href="sitemap.html">Sitemap</a> | <a href="contact.html">Contact</a> | <a href="docs.html">Docs</a></p>
+        <p><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms</a></p>
+      </div>
+      <div class="footer-right">
+        <a href="https://github.com"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="mailto:maazahmadcool@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
